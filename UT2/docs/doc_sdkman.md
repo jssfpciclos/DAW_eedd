@@ -243,8 +243,17 @@ Si tenemos configurado el fichero `.sdkmanrc` en la carpeta del proyecto, al abr
 
 Para configurar la versión de un SDK en un proyecto de Eclipse, tendremos que ir a `Window -> Preferences -> Java -> Installed JREs` y seleccionar la versión que queramos.
 
+<img src="https://github.com/jssfpciclos/DAW_eedd/assets/72703706/53eca6f1-451a-4a99-a7b6-7f0d08efccec" width="600px">
+
 Además podemos las ubicaciones disponibles de donde están instaladas las versiones de Java, a través del menú `Add -> Standard VM` y seleccionar la ruta donde se encuentre la versión de Java que queramos.	
 
+<img src="https://github.com/jssfpciclos/DAW_eedd/assets/72703706/97685080-6c1b-4910-b60d-517a5488eb8d" width="400px">
+
+Y buscamos el directorio donde está ubicado, le indicamos un nombre, esperamos unos pocos segundos a que Eclipse otenga las librerias, y Finalizar.
+
+La nuevamente añadida JRE es mostrada en la lista.
+
+<img src="https://github.com/jssfpciclos/DAW_eedd/assets/72703706/1d8e22c3-ade8-4722-a55f-f1c5789b1198" width="400px">
 
 
 ### Conclusión
