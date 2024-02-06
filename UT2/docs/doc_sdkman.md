@@ -1,9 +1,25 @@
+<!-- omit in toc -->
 # SDKMAN, ¿Qué es, cómo se instala y cómo se usa?
+
+<!-- omit in toc -->
+## indice
+
+- [¿Qué es un SDKMAN? ](#qué-es-un-sdkman-)
+  - [Características de SDKMAN! ](#características-de-sdkman-)
+  - [Instalación de SDKMAN! en Windows](#instalación-de-sdkman-en-windows)
+    - [Modificar el script de instalación](#modificar-el-script-de-instalación)
+  - [Ejemplo de cómo usar SDKMAN!](#ejemplo-de-cómo-usar-sdkman)
+  - [Configurando nuestro IDE y las variables de entorno](#configurando-nuestro-ide-y-las-variables-de-entorno)
+- [🧬 En profundidad](#-en-profundidad)
+  - [Uso en profundidad](#uso-en-profundidad)
+  - [➡️ Integración con IntelliJ Idea](#️-integración-con-intellij-idea)
+  - [➡️ Integración con Eclipse](#️-integración-con-eclipse)
+  - [Conclusión](#conclusión)
+  - [Referencias](#referencias)
 
 SDKMan es una heramienta que permite instalar y gestionar múltiples versiones de SDKs de diferentes lenguajes de programación, como Java, Groovy, Kotlin, Scala, entre otros.
 
-### ¿Qué es un SDKMAN? <hr>
-
+## ¿Qué es un SDKMAN? <hr>
 
 **SDKMAN!** es una herramienta que nos permite manejar la instalación y configuración de diversas versiones de SDKs (Software Developments Kits) mediante línea de comandos. Inicialmente, fue conocido como GVM (Groovy enVironment Manager) y está inspirado en otras herramientas utilizadas por la comunidad Ruby.
 
@@ -77,6 +93,9 @@ Una vez comentado este fragmento de código, podemos instalarlo mediante el coma
 bash sdkman.sh
 ```
 
+> 🚧 **Aviso**<br>
+> Debes ejecutar el comando desde GitBash, ya que si lo haces desde la consola de Windows, no funcionará.
+
 
 ### Ejemplo de cómo usar SDKMAN!
 
@@ -118,6 +137,123 @@ En este caso, para cada SDK que SDKMAN! tenga instalado, tendremos varias carpet
 
 Si utilizamos la ruta a esta current para la variable del entorno de Windows o de nuestro IDE, cada vez que cambiemos por consola la versión current tendremos nuestra consola y nuestros IDEs tirando de la versión que hayamos dictaminado por consola en el SDKMAN!. Esta es la gran ventaja que nos proporciona SDKMAN!: mediante un comando podemos ir saltando de una versión a otra de la SDK de una forma simple y rápida.
 
+
+## 🧬 En profundidad
+
+En windows esta herramienta solo funciona bajo GitBash, ya que es un script bash. En Linux y MacOS, se puede utilizar en cualquier terminal.
+
+En el script de instalación, instala un directorio oculto en el directorio de usuario llamado `.sdkman` donde se almacenan todas las versiones de los SDKs que instalemos. En este directorio, se almacenan las versiones de los SDKs que instalemos, así como la versión current que tengamos seleccionada.
+
+En `.bashrc` o `.zshrc` se añade una línea que carga el script de SDKMAN! para que esté disponible en todas las terminales que abramos. En Windows, se añade en el `.bashrc` que se encuentra en el directorio de usuario.
+
+```bash
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
+Sin esta linea en el `.bashrc` o `.zshrc`, no podremos utilizar SDKMAN! en la terminal.
+
+**¿Dónde se instalan las versiones de los SDKs?**
+
+En el directorio `~/.sdkman/candidates/java` tendremos todas las versiones de Java que tengamos instaladas, y en la carpeta `current` tendremos la versión que tengamos seleccionada en ese momento.
+
+Current es un enlace simbólico a la versión que tengamos seleccionada. Si cambiamos de versión, el enlace simbólico se cambiará a la versión que hayamos seleccionado.
+
+### Uso en profundidad
+
+Existen varios ámbitos de alcance para las versiones de los SDKs que instalemos. Podemos tener una versión global, una versión por usuario y una versión por proyecto.
+
+- Global: La versión que tengamos seleccionada en ese momento será la que se utilice por defecto en todas las terminales que abramos.
+- Terminal: La versión que tengamos seleccionada en ese momento será la que se utilice por defecto en todas las terminales que abramos.
+- Proyecto: La versión que tengamos seleccionada en ese momento será la que se utilice por defecto en todas las terminales que abramos.
+
+Para comprobar la versión actual del SDK que aplica sobre nuestra terminal, utilizaremos el comando `sdk current java`. Con este comando, podremos ver la versión que se está utilizando en ese momento.
+
+```bash
+$ sdk current java
+# podemos comprobar cualquier SDK
+$ sdk current maven
+```
+
+Para comprobar qué es lo que está actualmente en uso para todos los SDKs, utilizaremos el comando `sdk current`. Con este comando, podremos ver la versión que se está utilizando en ese momento para todos los SDKs.
+
+```bash
+$ sdk current
+
+Using:
+groovy: 4.0.18
+java: 21.0.2-tem
+scala: 3.3.1
+```
+
+▶️ **Cambiar la versión global**
+
+Para cambiar la versión global, utilizaremos el comando `sdk default java 11.0.12-open`. Con este comando, la versión 11.0.12-open será la que se utilice por defecto en todas las terminales que abramos.
+Además también cambiará el enlace simbólico current a la versión 11.0.12-open.
+
+```bash	
+sdk default java 11.0.12-open
+```
+
+▶️ **Cambiar la versión por terminal**
+
+Para cambiar la versión por terminal, utilizaremos el comando `sdk use java 11.0.12-open`. Con este comando, la versión 11.0.12-open será la que se utilice por defecto mientras el terminal esté abierto.
+
+▶️ **Cambiar la versión por proyecto**
+
+A veces es importante que un proyecto utilice una versión concreta de un SDK. Los propios IDEs almacenan esta configuracion en un archivo de configuración del proyecto, eclip se llama `.project` y en IntelliJ se llama `.idea`.
+
+Pero a veces es neceario cambiar la versión de un SDK en un proyecto sin tener que abrir el IDE, ya que necesitamos compilar o ejecutar algo desde la terminal.
+
+Para esto, SDKMAN! nos proporciona una herramienta que nos permite cambiar la versión de un SDK en un proyecto sin tener que abrir el IDE.
+
+  1. Inicializar el proyecto con la versión que queramos.
+
+    ```bash
+    # Dentro de la carpeta del proyecto, ejecutamos el siguiente comando.
+    # Crea un fichero .sdkmanrc con la versión que actualmente esté activa sobre la terminal.
+    sdk env init
+    ``` 
+  2. Si queremos que se auto-active esta versión al acceder a la carpeta del proyecto, tenemos que activar en la configuración de SDKMAN, `sdkman_auto_env=true`
+
+  3. Para que se aplique este cambio en la configuración será necesario cerrar la terminal y volver a abrirla.
+
+Ahora cada vez que accedamos a la carpeta del proyecto, la versión que esté seleccionada en el fichero `.sdkmanrc` será la que se utilice por defecto en ese proyecto.
+
+
+### ➡️ Integración con IntelliJ Idea
+
+**Configuración Manual**
+
+Para configurar la versión de un SDK en un proyecto de IntelliJ Idea, tendremos que ir a `File -> Project Structure -> Project Settings -> Project -> Project SDK` y seleccionar la versión que queramos.
+
+Podemos elegir la versión de las disponibles en el sistema, o bien, si tenemos SDKMAN! instalado, podremos seleccionar la versión que queramos.
+
+La ruta donde se encuentra las versiones instaladas por SDKMAN! es `~/.sdkman/candidates/java/`
+
+
+**Configuración Automática**
+
+Si tenemos configurado el fichero `.sdkmanrc` en la carpeta del proyecto, al abrir el proyecto, IntelliJ Idea detectará que hay un fichero `.sdkmanrc` y seleccionará la versión que esté en ese fichero.
+
+> 💡 **Nota**<br>
+> Esta opción solo está disponible a partir de la versión 2023 de IntelliJ Idea.
+
+
+### ➡️ Integración con Eclipse
+
+Para configurar la versión de un SDK en un proyecto de Eclipse, tendremos que ir a `Window -> Preferences -> Java -> Installed JREs` y seleccionar la versión que queramos.
+
+Además podemos las ubicaciones disponibles de donde están instaladas las versiones de Java, a través del menú `Add -> Standard VM` y seleccionar la ruta donde se encuentre la versión de Java que queramos.	
+
+
+
 ### Conclusión
 
 En este artículo hemos diseccionado SDKMAN!, una poderosa herramienta para instalar y configurar diversas versiones de SDKs mediante línea de comandos. Así, hemos visto en qué consiste, sus características principales, cómo instalarla y un ejemplo de uso de cómo instalar varias versiones de Java con ella.
+
+
+
+### Referencias
+
+- [Web SDKMAN!](https://sdkman.io/)
+- [Uso de SDKMAN!](https://sdkman.io/usage)
