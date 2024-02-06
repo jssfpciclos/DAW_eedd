@@ -320,7 +320,7 @@ Se denomina el sucesor de C++, ya que su objetivo es ser un lenguaje de programa
   Posee una documentación muy completa, y una comunidad muy activa, gran cantidad de librerías.
 
 
-¿ Qué se puede con Rust ?
+¿ Qué se puede hacer con Rust ?
 
 - Líneas de comandos
 - WebAssembly (permte potenciar JavaScript)
