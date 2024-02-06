@@ -47,20 +47,70 @@ $> where java
 
    📎 _Adjunta una imagen de las variables de entorno de tu sistema, tanto a nivel de usuario como a nivel de sistema._
 
-3. Instala el JDK 19 la implementación de Adoptium.
+    - Muestra a través de interfaz (imagen) (Usuarios y sistema)
+    - Muestra a nvel de comandos (imagen) (Solo usuario) (`set`)
+    - Muestra el contenido de la variable `PATH` (`echo %PATH%`) y de la variable `JAVA_HOME` (`echo %JAVA_HOME%`)
+   
 
-   - Ves a la página de [Adoptium](https://adoptium.net/) y descarga la versión de Java 19 para Window s y la arquitectura de tu PC (x32/x64).
+3. Instala el JDK 19 la implementación de Adoptium (Windows)
+
+   - Ves a la página de [Adoptium](https://adoptium.net/) y descarga la versión de Java 19 para Windows y la arquitectura de tu PC (x32/x64).
      (Incluye un gif de la instalación)
 
    - Una vez instalado, muestra la versión de Java instalada y la ruta de instalación. (a través de comandos y adjunta una imagen)
+     (`java -version` y `where java`) 
 
    - ¿ La versión de Java que te muestra es la 19? ¿ Por qué?
 
-4. Configura tu sistema para que utilice la versión de Java 19 como versión por defecto a nivel de usuario.
+
+4. Configura tu sistema para que utilice la versión de Java 19 como versión por defecto a nivel de usuario. (Si ya lo tienes explica por qué)
 
    - ¿ Cómo has configurado tu sistema para que utilice la versión de Java 19 como versión por defecto?
 
-5. Instala el JDK
+
+5. Instala SDKMan en Windows. (_Para ello puedes seguir la guía disponible [aquí](../docs/doc_sdkman.md)_)
+
+   - Instala SDKMan en Windows e explica los pasos que has seguido, adjunta una captura final de SDK funcionando.
+
+   - Muestra la versión de SDKMan instalada
+
+   - ¿ Dónde se ha instalado SDKMan? ¿ Por qué?
+
+   - Muestra las versiones de Java que tienes instaladas a través de SDKMan
+
+
+   - ¿ Qué ventajas tiene instalar SDKMan en Windows?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## ¿Cómo configuro Eclipse para que utilice un JDK?
 
