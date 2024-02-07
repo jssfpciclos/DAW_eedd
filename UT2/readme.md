@@ -8,15 +8,20 @@
 - [JetBrains](https://www.jetbrains.com/)
   - [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-## Contenidos
+## 🕶️ Contenidos
 
 1. [Entornos de desarrollo](#1-entornos-de-desarrollo)
 2. [IDEs más utilizados](#2-ides-más-utilizados)
 3. [Principales IDEs genéricos](#3-principales-ides-genéricos)
 4. [Principales IDEs específicos](#4-principales-ides-específicos)
-   
 
-## Ampliación
+
+## ➡️ A fondo
+
+- [IntellJ IDEA IDE](./docs/doc_intellj_IDE.md)
+
+
+## 🧬 Ampliación
 
 - [Variable de entorno JAVA_HOME](./docs/doc_javahome.md)
 - [SDKMAN! Gestor de SDKs](./docs/doc_sdkman.md)
