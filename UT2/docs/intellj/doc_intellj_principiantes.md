@@ -138,6 +138,12 @@ Para comenzar, aquí tienes un pequeño tutorial, para depurar tu primera aplica
 
 ### Navegar en el proyecto / Módulos
 
+La organización del proyecto es fundamental, manejar las carpetas, los paquetes, saber qué forma parte del código fuente y que no, como son los ficheros compilados, artefactos generados y otras librerias de terceros.
+
+IntellJ tiene una herramienta muy potente para ello, la "Ventana Proyecto", la cual permite una mirada al proyecto desde varios puntos de viesta y ejecutar diferentes tareas.
+
+[Vetana Gestión Proyecto](https://www.jetbrains.com/help/idea/project-tool-window.html)
+
 
 
 
