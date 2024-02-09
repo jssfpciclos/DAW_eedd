@@ -22,7 +22,7 @@ El fichero `readme.md` debe contener los siguientes apartados:
 
 - Cada uno de los puntos de la tarea.
 
-### 1. Instalar el JDK en Windows
+### 1. Configuración de Java en Windows y Linux
 
 1. Revisa la configuración de tu máquina a través del terminal e indica la versión de Java que tienes instalada.
 
@@ -32,7 +32,7 @@ $> java -version
 # Comprueba donde está instalado Java
 $> where java
 # Busca todas las versiones de Java instaladas
-$> where java
+$> which java
 ```
 
 📎 _Adjunta una imagen de los comandos anteriores y responde a las siguientes preguntas_
@@ -47,10 +47,9 @@ $> where java
 
    📎 _Adjunta una imagen de las variables de entorno de tu sistema, tanto a nivel de usuario como a nivel de sistema._
 
-    - Muestra a través de interfaz (imagen) (Usuarios y sistema)
-    - Muestra a nvel de comandos (imagen) (Solo usuario) (`set`)
-    - Muestra el contenido de la variable `PATH` (`echo %PATH%`) y de la variable `JAVA_HOME` (`echo %JAVA_HOME%`)
-   
+   - Muestra a través de interfaz (imagen) (Usuarios y sistema)
+   - Muestra a nvel de comandos (imagen) (Solo usuario) (`set`)
+   - Muestra el contenido de la variable `PATH` (`echo %PATH%`) y de la variable `JAVA_HOME` (`echo %JAVA_HOME%`)
 
 3. Instala el JDK 19 la implementación de Adoptium (Windows)
 
@@ -58,15 +57,15 @@ $> where java
      (Incluye un gif de la instalación)
 
    - Una vez instalado, muestra la versión de Java instalada y la ruta de instalación. (a través de comandos y adjunta una imagen)
-     (`java -version` y `where java`) 
+     (`java -version` y `where java`)
 
    - ¿ La versión de Java que te muestra es la 19? ¿ Por qué?
-
 
 4. Configura tu sistema para que utilice la versión de Java 19 como versión por defecto a nivel de usuario. (Si ya lo tienes explica por qué)
 
    - ¿ Cómo has configurado tu sistema para que utilice la versión de Java 19 como versión por defecto?
 
+### 2. Utilización de SDKMan
 
 5. Instala SDKMan en Windows. (_Para ello puedes seguir la guía disponible [aquí](../docs/doc_sdkman.md)_)
 
@@ -78,55 +77,69 @@ $> where java
 
    - Muestra las versiones de Java que tienes instaladas a través de SDKMan
 
+   - ¿ Qué ventajas tiene instalar SDKMan?
 
-   - ¿ Qué ventajas tiene instalar SDKMan en Windows?
+   - ¿ Instala la versión de Jara 8.0_302-zulu a través de SDKMan ?
 
+   - ¿ Instala la versión de Java 11.0.12-zulu a través de SDKMan ?
 
+   - ¿ Instala la versión de Java 17.0.0-zulu a través de SDKMan ?
 
+6. Configura tu sistema para que utilice la versión de Java 17.0.0 como versión por defecto a nivel de usuario. (Para que las aplicaciones que ejecutes utilicen esta versión de Java)
 
+   - ¿ Qué tienes hacer o comando tienes que utilizar (SDKMAN) para que una aplicación ejecutada desde la interfaz (Windows o Linux) utilize esa versión de Java?
 
+   - ¿ Qué variable de Entorno tienes que modificar para que una aplicación ejecutada desde la interfaz (Windows o Linux) utilize esa versión de Java?
 
+7. Si necesitas compilar una aplicación de Java desde la terminal, fuera del IDE, y necesita compilarse con la version de Java 8, ¿ Cómo lo harías?
 
+   - ¿ Qué comando de SDKMAN tienes que utilizar para que a nivel de la terminal actual use la versión de Java 8?
 
+   - ¿ Qué comando utilizas para compilar una aplicación de Java ?
 
+8. Un proyecto en el que estas trabajando, neceseita la versión de Java 11, pero requieres compilarlo con esa versión, pero no quieres tener siempre que recordar esto, y quieres que se active automáticamente esa versión una vez accedas al directorio del proyecto.
 
+   - ¿ Cómo puedes realizar esto con SDKMAN ? (indica los comandos que tienes que utilizar y la configuración de la herramienta)
 
+   - Haz una captura de pantalla entrando y saliendo del directorio del proyecto, para ver cono se activa y desactiva una versión y otra de Java.
 
+9. Ahora en Eclipse, configura el JDK 17 descargado con SDKMAN, como JDK por defecto.
 
+   - ¿ Cómo has configurado Eclipse para que utilice el JDK 17 descargado con SDKMAN? (Muestra una captura de pantalla)
 
+   - Inicia un nuevo proyecto (TE21-Paso9) en Eclipse y muestra la versión de Java que aparece por defecto para el Workspace. (Muestra una captura de pantalla)
 
+   - Cambia la versión de Java del proyecto para que utilize la versión de Java 8. (Muestra una captura de pantalla)
 
+### 3. Utilización de JetBrains IntelliJ IDEA y Eclipse
 
+10. Crea un nuevo proyecto en IntelliJ IDEA (TE21-Paso10) y configura en ese directorio, con SDKMAN para que utilize la versión de Java 11.
 
+- Ahora al abrir IntellJ IDEA, debe activar esa versión automaticamente, pues detectar la configuración. (Incluye una captura de panntalla o GIF de la configuración))
 
+11. Importar el proyecto TE21-Paso9 en IntelliJ IDEA que has creado en Eclipse.
 
+- Revisa la configuración de la versión de Java que utiliza el proyecto ¿Es la misma que utiliza Eclipse?. (Muestra una captura de pantalla)
+  Explica según tu opinión y en base a la configuración aplicada al proyecto de Eclipse realizada en el paso 9, si debe ser la misma versión de JDK en ambos proyectos o si esto depende de otras configuraciones extenas al proyecto.
 
+12. Crea un nuevo proyecto en IntelliJ IDEA (TE21-Paso12) que se guarde en la carpeta TE21-Paso12.
 
+- Configura el proyecto para que utilice la versión de Java 17 descargada con SDKMAN. (Muestra una captura de pantalla de la configuración del fichero .sdkmanrc)
+- Agrega otro módulo al proyecto, que se guarde en la carpeta Modulo2.
+- Agrega otro módulo al proyecto, que se guarde en la carpeta Modulo3.
 
+(Muestra una captura de pantalla de la estructura del proyecto en IntelliJ IDEA)
 
+- Vincula el proyecto principal, con los módulos 2 y 3. (Muestra una captura de pantalla de la configuración de los módulos)
 
+13. En el módulo 2, crea una clase que se llame `Utilidades` y que tenga un método que se llame `calculadora` y que tenga los métodos de suma, resta, multiplicación y división.
 
+(Muestra el código de la clase `Utilidades` con un bloque de código)
 
+14. En el módulo 3, crea una clase llamada `Conversor` que tenga un método que se llame `Texto_to_Uppercase` que convierta un texto a mayúsculas, y otro método que se llame `Texto_to_Lowercase` que convierta un texto a minúsculas.
 
+(Muestra el código de la clase `Conversor` con un bloque de código)
 
+15. En el módulo principal, crea una clase llamada `Principal` que tenga un método `main` que instancie las clases `Utilidades` y `Conversor` y que muestre por consola el resultado de las operaciones de la clase `Utilidades` y el resultado de las operaciones de la clase `Conversor`.
 
-
-
-## ¿Cómo configuro Eclipse para que utilice un JDK?
-
-Para
-
-Aquí tienes un ejemplo de cómo configurar Eclipse para utilizar un JDK y establecer el Build Path:
-
-Abre Eclipse y ve al menú "Window" (Ventana) y selecciona "Preferences" (Preferencias).
-En la ventana de preferencias, expande la categoría "Java" y selecciona "Installed JREs" (JREs instalados).
-Haz clic en el botón "Add" (Agregar) para agregar un nuevo JRE.
-Selecciona la opción "Standard VM" (VM estándar) y haz clic en "Next" (Siguiente).
-Haz clic en el botón "Directory" (Directorio) y selecciona la ubicación del directorio de instalación de tu JDK.
-Haz clic en "Finish" (Finalizar) para agregar el JRE.
-Ahora, ve a la categoría "Java" y selecciona "Build Path" (Ruta de compilación).
-Haz clic en la pestaña "Libraries" (Bibliotecas) y luego en el botón "Add Library" (Agregar biblioteca).
-Selecciona "JRE System Library" (Biblioteca del sistema JRE) y haz clic en "Next" (Siguiente).
-Selecciona el JRE que agregaste anteriormente y haz clic en "Finish" (Finalizar).
-Haz clic en "Apply and Close" (Aplicar y cerrar) para guardar los cambios.
-Recuerda que estos pasos pueden variar ligeramente dependiendo de la versión de Eclipse que estés utilizando.
+(Muestra un gif donde se muestre la ejecución del programa, en depuración y se visualice que no existen errores de compilación ni ejecución).
