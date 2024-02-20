@@ -14,6 +14,14 @@ En esta tarea de aprendizaje, aprenderás a instalar el JDK y JREs en Windows y 
 - Conocer cómo configurar Windows y Linux a nivel de sistema para utilizar diferentes versiones de Java.
 - Conocer cómo instalar y usar la herramienta SDKMan para instalar diferentes versiones de Java en Linux/MacOS/Windows.
 
+### Recursos
+
+**GIF Videos**
+
+- [Software crear GIFs animados para Windows](https://www.screentogif.com/)
+- [Software crear GIFs animados para Linux](https://github.com/phw/peek)
+- [Herramienta Online GIF](https://ezgif.com/video-to-gif)
+
 ### Entrega
 
 El documento justificativo de la realización de la tarea se realizará en formato `Markdown`, el nombre del fichero será `readme.md` y estará dentro de la carpeta `UT2\TE2.1` dentro del repositorio oficial del alumno para la asignatura.
