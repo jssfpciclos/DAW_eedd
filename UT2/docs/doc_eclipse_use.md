@@ -140,3 +140,19 @@ También contiene un botón (el que está más a la izquierda) que le permite ab
 <img src="https://github.com/jssfpciclos/DAW_eedd/assets/72703706/bf72b41e-8f37-4f87-ab8d-e64da8b327a4" style="display: block; margin: 0 auto"><br>
 
 Pues estos son los conceptos y componentes más importantes del IDE de Eclipse. Al comprenderlos, sabrá como utilizar el IDE de forma adecuada y eficaz.
+
+
+## Temas prácticos
+
+### Crear artefacto JAR
+
+Si necesitamos crear un archivo JAR con nuestro proyecto, podemos hacerlo a través de la opción "Exportar" que se encuentra en el menú "Archivo" de Eclipse.
+
+> 💡 **Conocer más** *¿ Qué es un archivo JAR?* <br>
+> - Un archivo JAR (Java ARchive) es un archivo ZIP que contiene un conjunto de archivos comprimidos. Conoce más en este [articulo](https://recoverit.wondershare.es/file-tips/what-is-jar-file.html)
+> - Otro concepto importante es el archivo de [MANIFEST.MF](https://www.baeldung.com/java-jar-manifest), que es un archivo de metadatos que contiene información sobre los archivos empaquetados en un archivo JAR.
+
+El siguiente [enlace](https://www.eclipse.org/community/eclipse_newsletter/2017/february/article1.php) de la documentación de Eclipse se explican estos conceptos.
+
+Este proceso en Eclipse es sencillo, como se explica en el siguiente articulo. [Eclipse crear un JAR](https://www.tutorialspoint.com/eclipse/eclipse_create_jar_files.htm)
+
