@@ -2,6 +2,12 @@
 # SDKMAN, ¿Qué es, cómo se instala y cómo se usa?
 
 <!-- omit in toc -->
+## 💼 Recursos
+
+- [Video Makigas: explicación de SDKMAN!](https://youtu.be/ShpX6NMg0Nk)
+- [Web SDKMAN!](https://sdkman.io/)
+
+<!-- omit in toc -->
 ## indice
 
 - [¿Qué es un SDKMAN? ](#qué-es-un-sdkman-)
