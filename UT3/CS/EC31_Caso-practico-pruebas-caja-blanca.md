@@ -96,8 +96,8 @@ Tabla de pruebas con caminos y características:
 
 | Camino | x   | y   | z   | Caracteristicas |
 | ------ | --- | --- | --- | --------------- |
-| 1      | 10  | 3   | 3   | x>y             |
-| 2      | 5   | 2   | 10  | x>y, z>y        |
+| 1      | 10  | 3   | 3   | x>y, x<=z, z<=y |
+| 2      | 5   | 2   | 10  | x>y, x>z, z>y   |
 | 3      | 5   | 10  | 5   | x>y, x>z        |
 
 
@@ -120,10 +120,10 @@ Tabla de pruebas con caminos y características:
 
 | Camino | x   | y   | z   | Caracteristicas |
 | ------ | --- | --- | --- | --------------- |
-| 1      | 10  | 3   | 3   | x>y             |
-| 2      | 5   | 2   | 10  | x>y, x<z, z>y   |
-| 3      | 5   | 10  | 5   | x>y, x>z        |
-| 4      | 5   | 10  | 5   | x<y, z<y        |
+| 1      | 10  | 3   | 11  | x>y, x<=z, z<=y |
+| 2      | 5   | 2   | 4   | x>y, x>z, z>y   |
+| 3      | 10  | 5   | 6   | x>y, x>z        |
+| 4      | 5   | 10  | 6   | x<=y, z<=y      |
 
 
 ## Ejercicio 2
