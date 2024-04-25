@@ -1,4 +1,4 @@
-# UNIT TESTING JAVA (JUNIT)
+# UNIT TESTING JAVA (JUNIT 5)
 
 ## Introducción
 
@@ -144,8 +144,347 @@ Otras anotaciones de JUnit 5:
 - @Nested: Permite anidar clases de prueba. Se pueden anidar clases de prueba para organizar las pruebas de forma jerárquica. Cada clase de prueba anidada se ejecuta de forma independiente.
 
 
+### Primeras pruebas unitarias con JUnit
+
+- Cada prueba se realiza en un método anotado con @Test.
+- Si falla una condición (assertion) en un test, éste falla.
+- Las instancias a nivel de clase son diferentes para cada test.
+- **El orden de las pruebas no importa**
 
 
+#### Asserts
+
+Los asserts son métodos que permiten verificar si una condición es verdadera o falsa. Si la condición es verdadera, la prueba continúa. Si la condición es falsa, la prueba falla.
+
+Algunos métodos de aserción más comunes en JUnit son:
+
+- assertTrue/assertFalse: Verifica si una condición es verdadera/falsa.
+- assertEquals: Verifica si dos valores son iguales.
+- assertNotEquals: Verifica si dos valores no son iguales.
+- assertNull/assertNotNull: Verifica si un valor es nulo/no nulo.
+- assertSame/assertNotSame: Verifica si dos referencias apuntan al mismo objeto/no al mismo objeto.
+- assertThat: Verifica si un valor cumple una condición.
+- assertThrows: Verifica si una excepción es lanzada.
+- assertTimeout: Verifica si una operación se ejecuta en un tiempo determinado.
+- assertAll: Verifica varias condiciones a la vez.
+
+También podemos hacer que una prueba falle de forma controlada con el método `fail()`.
+
+#### Ejemplo
+
+En el siguiente ejemplo se quiere comprobar que el método `sendProduct`acutaliza el stock de la tienda.
+
+  
+```java
+@Test
+void itShoutldRemoveFromStore() {
+  Product product = new Product("Coca-Cola", 10);
+  Store store = new Store("Store", List.of(product, product, product));
+
+  storeService.sendProduct(product);
+  assertNotNull(store.getProducts());
+  assertEquals(2, store.getProducts().size());
+}
+```
+
+Los métodos `assert`pueden reportar mensajes de fallos personalizados:
+
+- Se pasan como último parámetro del método como un `String` o como una expresión lambda.
+
+Ejemplos:
+
+- assertEquals(2, store.getProducts().size(), "El tamaño de la lista de productos no es correcto");
+- assertEquals(2, calculadora.suma(1,1), () -> "La suma debería ser 2");
 
 
+### Ciclo de vida de una prueba
+
+El ciclo de vida de una prueba en JUnit 5 es el siguiente:
+
+1. **@BeforeAll**: Se ejecuta una vez antes de todos los métodos de prueba.
+2. **@BeforeEach**: Se ejecuta antes de cada método de prueba.
+3. **@Test**: Método de prueba.
+4. **@AfterEach**: Se ejecuta después de cada método de prueba.
+5. **@AfterAll**: Se ejecuta una vez después de todos los métodos de prueba.
+
+El orden en el que se ejecutan los test es aleatorio, por lo que no se puede garantizar el orden de ejecución de los test.
+
+Pero si se necesita garantizar el orden de ejecución de los test, se puede utilizar la anotación `@Order`.
+
+```java
+@Test
+@Order(1)
+void test1() {
+  // Test 1
+}
+
+@Test
+@Order(2)
+void test2() {
+  // Test 2
+}
+```
+
+En este caso, el test1 se ejecutará antes que el test2. 
+
+> 💡 Si algún test no tiene la anotación `@Order`, se ejecutará después de los test que sí la tengan.
+
+#### Setup y TearDown
+
+En JUnit 5, se pueden utilizar los métodos `@BeforeEach` y `@AfterEach` para realizar la configuración y limpieza de los recursos necesarios para la ejecución de las pruebas.
+
+```java
+@BeforeEach
+void setUp() {
+  // Configuración de recursos
+}
+
+@AfterEach
+void tearDown() {
+  // Limpieza de recursos
+}
+```
+
+#### Deshabilitar pruebas
+
+Los test pueden ser deshabilitados con la anotación `@Disabled` o `@Ignore`. (JUnit 5 recomienda indicar un motivo)
+
+```java
+public class DisabledTest {
+
+    @Test
+    //@Disabled("Until bug #12300 fix")
+    void test1() {
+        System.out.println("test1");
+        assertTrue(true);
+    }
+
+    @Test
+    @Disabled("Until feature #11900")
+    void test2() {
+        System.out.println("test2");
+        assertTrue(true);
+    }
+
+}
+```
+
+#### Test condicionales
+
+En JUnit 5, las pruebas unitarias se puede ejecutar conforma a diferentes condiciones.
+
+**@EnabledOnOs**
+
+- Permite habilitar/deshabilitar una prueba en función del sistema operativo. @EnabledOnOs({OS.WINDOWS, OS.LINUX}), @DisabledOnOs({OS.MAC})
+- Permite habilitar/deshabilitar una prueba en función de la versión de Java. @EnabledOnJre(JRE.JAVA_8), @DisabledOnJre(JRE.JAVA_11)
+- o incluso por rangos:
+  - @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_11)
+  - @DisabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_11)
+
+**@EnabledIfSystemProperty**
+
+- Permite habilitar/deshabilitar una prueba en función de una propiedad del sistema. @EnabledIfSystemProperty(named = "os.arch", matches = ".*64.*")
+- Se puede usar con: System.getProperty("os.arch")
+- Si no existe la propiedad, no se ejecuta.
+  - @EnabledIfSystemProperty(named = "os.arch", matches = ".*64.*", disabledReason = "Solo para 64 bits")
+
+**@EnabledIfEnvironmentVariable**
+
+- Permite habilitar/deshabilitar una prueba en función de una variable de entorno. @EnabledIfEnvironmentVariable(named = "ENV", matches = ".*dev.*")
+  - Número de núcleos, memoria, etc.
+  - Entorno local, DEV, QA, PROD, etc.
+
+**@EnabledIf / @DisableIf**
+
+- Permite habilitar/deshabilitar una prueba en función de una expresión booleana. - El método encargado de ello estará especificado en el test mediante la anotación @EnabledIf o @DisabledIf.
+- Será estático si se usa a nivel de clase.
+
+
+Ejemplos de todo esto:
+
+```java
+    @EnabledOnJre(JRE.JAVA_8)
+    @Test
+    void test1() {
+        System.out.println("test1 java 8");
+    }
+    @EnabledOnJre(JRE.JAVA_16)
+    @Test
+    void test2() {
+        System.out.println("test2 java 16");
+    }
+
+    @EnabledForJreRange(min = JRE.JAVA_8, max=JRE.JAVA_11)
+    @Test
+    void test3() {
+        System.out.println("test3 range");
+    }
+
+
+    @Test
+    @EnabledOnOs(OS.LINUX)
+    void test4() {
+        System.out.println("test4 linux");
+    }
+```	
+
+#### Escribir propias condiciones
+
+Dentro de los test-condicionales podemos tener un tipo de test, que se ejecuta en función de una condición que nosotros mismos definimos.
+
+- Permiten habilitar parte de un test en función de si se cumple una condición.
+  - assumeTrue(boolean condition)
+  - assumeFalse(boolean condition)
+- Si la condición no se cumple, el código a partir de ahí se deshabilita, evitando el fallo, es decir, solo queremos probar si se cumple una condición, sino se cumple, no quremos que falle el test.
+
+```java
+    @Test
+    void test5() {
+        assumeTrue("DEV".equals(System.getenv("ENV")));
+        System.out.println("test5");
+        // imprime si la variable de entorno ENV es DEV, en caso contrario no se ejecuta y el test queda deshabilitado.
+    }
+```	
+
+otros ejemplos:
+
+```java
+    @Test
+    void name() {
+        String jdk = System.getenv("JAVA_HOME");
+        assumeTrue(jdk.contains("jdk-11"));
+        assumeFalse(jdk.contains("jdk-16.0.2"));
+
+        System.out.println("El test continua");
+    }
+
+    @Test
+    void name2() {
+        String jdk = System.getenv("JAVA_HOME");
+
+        assumingThat(jdk.contains("jdk-11"),
+                () -> {
+
+
+                }
+        );
+
+    }
+```	
+
+### Test anidados
+
+En JUnit 5, se pueden anidar clases de prueba para organizar las pruebas de forma jerárquica, por diferentes criterios: funcionalidad, condicionalidad, ...
+
+- Se trata de inner classes en Java.
+- Se anotan las clases con @Nested.
+- @BeforeAll y @AfterAll no se pueden usar en clases anidadas.
+- Se puede incluir una descripción en dichas clases y los métodos que contienen con @DisplayName.
+- Los test aparecerán en el `reporting` agrupados por clases.
+- Si falla un test de una clase anidada, falla la clase anidada y la clase padre.
+
+```java	
+@DisplayName("Tests para servicio SmartPhone")
+public class ANestedTest {
+
+    @Test
+    @DisplayName("Test1")
+    void test1() {
+        System.out.println("test1");
+        assertTrue(true);
+    }
+
+    @Nested
+    @DisplayName("operaciones recuperar datos")
+    class Grupo1 {
+        @Test
+        @DisplayName("Find all()")
+        void test2() {
+            System.out.println("test2");
+            assertTrue(true);
+        }
+
+        @Test
+        @DisplayName("Find one()")
+        void test3() {
+            System.out.println("test3");
+            assertTrue(true);
+        }
+
+        @Test
+        @DisplayName("Find by CPU cores()")
+        void test4() {
+            System.out.println("test4");
+            assertTrue(true);
+        }
+
+    }
+
+    @Nested
+    @DisplayName("operaciones insercion nuevos datos")
+    class Grupo2 {
+
+        @Test
+        @DisplayName("Insert one")
+        void test5() {
+            System.out.println("test5");
+            assertTrue(true);
+        }
+
+        @Test
+        @DisplayName("Insert in batch")
+        void test6() {
+            System.out.println("test5");
+            assertTrue(true);
+        }
+    }
+}
+
+```
+
+### Test repetidos
+
+En JUnit 5, se pueden repetir las pruebas un número específico de veces.
+
+- Se anotan los métodos con @RepeatedTest.
+  - Útil para pruebas de rendimiento.
+  - Útil en métodos que presentan comportamiento aleatorio.
+
+- En el reporting se mostrará el número de veces que se ha repetido el test.
+- Se puede combiar el nombre con @DisplayName.
+  - @DisplayName: será el título principal.
+  - @RepeatedTest: Nombre de cada repetición.
+
+```java
+  public class BRepeatedTest {
+
+    @Test
+    void test1() {
+        System.out.println("Prueba concepto test1");
+    }
+
+    @RepeatedTest(value = 3)
+    void test2() {
+        System.out.println("Prueba concepto test2");
+    }
+
+    @DisplayName("Caso de test 3")
+    @RepeatedTest(value = 3, name = RepeatedTest.SHORT_DISPLAY_NAME)
+    void test3() {
+        System.out.println("Prueba concepto test3");
+    }
+
+    @DisplayName("Caso de test 4")
+    @RepeatedTest(value = 3, name = RepeatedTest.LONG_DISPLAY_NAME)
+    void test4() {
+        System.out.println("Prueba concepto test3");
+    }
+
+    @DisplayName("Caso de test 4")
+    @RepeatedTest(value = 3, name = "{displayName} - {currentRepetition} / {totalRepetitions}")
+    void test5() {
+        System.out.println("Prueba concepto test3");
+    }
+}
+```
 
