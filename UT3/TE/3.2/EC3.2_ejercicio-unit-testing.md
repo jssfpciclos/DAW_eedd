@@ -8,6 +8,8 @@
 - El proyecto debe subirse en la ruta `UT3/EC/3.2/` de vuestro repositorio.
 
 
+Dentro de la ruta `UT3/TE/3.2/` incluye un fichero `readme.md` donde se refleje la información solicitada en el ejercicio.
+
 ### Recursos
 
 - [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)

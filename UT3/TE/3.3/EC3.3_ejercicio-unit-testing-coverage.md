@@ -7,6 +7,8 @@
 - El proyecto debe contener un .gitignore adecuado (ignorando target, .idea, etc.) para no subir ficheros innecesarios al repositorio.
 - El proyecto debe subirse en la ruta `UT3/TE/3.3/` de vuestro repositorio.
 
+Dentro de la ruta `UT3/TE/3.3/` incluye un fichero `readme.md` donde se refleje la información solicitada en el ejercicio.
+
 
 ### Recursos
 
