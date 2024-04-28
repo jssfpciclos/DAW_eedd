@@ -4,6 +4,7 @@
 ## Indice
 
 1. [Unit Testing en Java](./doc_unit-testing-java.md)
+2. [Covertura de código](./doc_unit-testing-coverage.md)
 
 
 ## Ejercicios
