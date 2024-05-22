@@ -1,4 +1,4 @@
-# Ejercicios 1.2: Casos de Uso
+# Tarea Evaluable 5.1: Casos de Uso
 
 ### Resursos
 
@@ -57,12 +57,12 @@ El comercio electrónico ha revolucionado la manera en que las personas compran 
 
 ### Tareas a Realizar:
 
-1. Definir los Casos de Uso Detallados:
+- Definir los Casos de Uso Detallados:
 
   - Para cada actor, define en detalle qué acciones realizan en el sistema.
   - Piensa en cualquier relación entre casos de uso que pueda existir (por ejemplo, un cliente debe autenticarse antes de poder agregar productos al carrito).
 
-2. Completar y Detallar el Diagrama de Casos de Uso:
+- Completar y Detallar el Diagrama de Casos de Uso:
 
   - Completa el diagrama de casos de uso con las relaciones necesarias.
   - Añade cualquier caso de uso adicional que consideres necesario para un sistema de comercio electrónico funcional.
@@ -131,12 +131,12 @@ Requisitos del Sistema:
 
 ### Tareas a Realizar:
 
-1. Definir los Casos de Uso Detallados:
+- Definir los Casos de Uso Detallados:
 
   - Para cada actor, define en detalle (indicando al menos una frase en qué consiste) qué acciones realizan en el sistema.
   - Piensa en cualquier relación entre casos de uso que pueda existir (por ejemplo, un cliente debe autenticarse antes de poder agregar productos al carrito).
 
-2. Completar y Detallar el Diagrama de Casos de Uso:
+- Completar y Detallar el Diagrama de Casos de Uso:
 
   - Completa el diagrama de casos de uso con las relaciones necesarias.
   - Añade cualquier caso de uso adicional que consideres necesario para un sistema de comercio electrónico funcional.
