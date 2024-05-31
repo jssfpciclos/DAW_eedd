@@ -48,6 +48,8 @@ Basado en los casos de uso definidos, elabora un diagrama de clases, incorporand
 
 En base al diagrama de clases anterior, genera las clases en Java incluidas en el mismo, incluyendo atributos y métodos, así como las relaciones entre las clases.
 
+> 💡Nota: Para este caso los atributos se permite que sean públicos.
+
 Genera un proyecto en IntelliJ IDEA, con el nombre `BibliotecaDigitalEEDD`, y crea las clases en el paquete raíz `com.iessdf.eedd.digitalbooks`, y las clases dentro del paquete `model`. 
 
 Para ello, crea un proyecto basado en Maven desde la opción File -> New -> Project... -> Maven -> Create from archetype -> maven-archetype-quickstart, y pon el nombre del proyecto BibliotecaDigitalEEDD.
@@ -76,4 +78,9 @@ Genera los test siguientes para clase Biblioteca, encargada de la gestión de re
 ### Ejercicio 5: Cobertura de código
 
 Ejecuta la cobertura de código de IntelljIDEA a tu proyecto, y comprueba que los test unitarios cubren al menos un 80% del código de la clase Biblioteca.
+
+Si no fuera el caso, modifica los test unitarios para que cubran al menos el 80% del código.
+
+> Nota: Este ejercicio no será tomado en consideración si no existen al menos 4 métodos en la clase Biblioteca, referentes a los casos de uso.
+
 
