@@ -521,7 +521,7 @@ Ejecuta la cobertura de código de IntelljIDEA a tu proyecto, y comprueba que lo
 
 ---
 
-En este caso, y después de ejecutar la cobertura de código, se comprueba de métodos es del 63%, por lo que aún no llegamos al 80% de cobertura. Por lo tanto, se deben añadir más test unitarios.
+En este caso, y después de ejecutar la cobertura de código, se comprueba de métodos es del 70%, por lo que aún no llegamos al 80% de cobertura. Por lo tanto, se deben añadir más test unitarios.
 
 | Nombre |  Class | Method | Line | Condition |
 |--------|--------|--------|------|-----------|
