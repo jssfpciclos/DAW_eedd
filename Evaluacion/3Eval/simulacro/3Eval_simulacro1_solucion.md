@@ -525,7 +525,7 @@ En este caso, y después de ejecutar la cobertura de código, se comprueba de m�
 
 | Nombre |  Class | Method | Line | Condition |
 |--------|--------|--------|------|-----------|
-| Library | 100% | 70% (7/10) | 67% | 43%% |
+| Library | 100% | 70% (7/10) | 67% | 43% |
 
 En base a estos resultados, vamos a agregar algún test unitario más para aumentar la cobertura de código de métodos hasta el 80%.
 
@@ -566,7 +566,7 @@ Ahora si ejecutamos de nuevo la cobertura de código, vemos que la cobertura de 
 
 | Nombre |  Class | Method | Line | Condition |
 |--------|--------|--------|------|-----------|
-| Library | 100% | 80% (8/10) | 67% | 43%% |
+| Library | 100% | 80% (8/10) |77% | 56% |
 
 
 Por tanto hemos cumplido con el objetivo de cobertura de código del 80% en la clase `Library`.
